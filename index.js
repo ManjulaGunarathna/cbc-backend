@@ -1,7 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose, { get } from 'mongoose';
-import productRouter from './routes/productRouter.js';
 import userRouter from './routes/userRouter.js';
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
