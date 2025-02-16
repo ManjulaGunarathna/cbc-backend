@@ -74,4 +74,5 @@ export function loginUser(req,res){
         }
     )
 }
-// manjula.doe@example.com            securepassword123
+// manjula.doe@example.com            securepassword123  -admin
+// manjula123.doe@example.com         securepassword123  -customer
