@@ -3,6 +3,11 @@ import Order from "../models/order";
 export async function createOrder(req,res){
     //cbc0001
 
+    if(!isCustomer){
+        res.json({
+            messege: "Please login as customer to create orders"
+        })
+    }
     //take the latest product id
     try{
         const latestOrder = await Order.find().sort
@@ -25,6 +30,18 @@ export async function createOrder(req,res){
 
             orderId = "CBC" +newNumber
         }
+
+        const newOrderData = req.body
+        newOrderData.orderId = orderId
+        newOrderData.email = req.user.email
+
+        const order = new Order(newOrderData)
+
+        await order.save()
+
+        res.json({
+            messege: "Order created"
+        })
 
     }catch(error){
         res.status(500).json({
